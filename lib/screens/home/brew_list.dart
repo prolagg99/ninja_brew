@@ -26,59 +26,19 @@ class _BrewListState extends State<BrewList> {
           .collection('items')
           .snapshots(),
       builder: (context, snapshot) {
-        //     return snapshot.hasData
-        //         ? ListView.builder(
-        //             itemCount: snapshot.data!.docs.length,
-        //             itemBuilder: (context, index) {
-        //               var items =
-        //                   snapshot.data!.docs.map((DocumentSnapshot document) {
-        //                 return BrewTile(brew: document);
-        //               });
-        //               return Text('null');
-        //             })
-        //         : Center(child: CircularProgressIndicator());
-        //   },
-        // );
-
         if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasData) {
-          var items = snapshot.data!.docs.length;
-
-          // .map((DocumentSnapshot document) {
-          //   print(" here >>>  ${document.data()}");
-          // });
-          print("$items");
-          return BrewTile(brew: snapshot.data!.docs[0]);
-          // return ListView.builder(
-          //   itemCount: items,
-          //   itemBuilder: (context, index) {
-          //     return BrewTile(brew: snapshot.data!.docs[index]);
-          //   },
-          // );
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              return BrewTile(brew: snapshot.data!.docs[index]);
+            },
+          );
         } else {
-          // print("error in .....");
           return Text('no data');
         }
-
-        //
-        // return snapshot.hasData
-        //     ? ListView.builder(
-        //         itemCount: 2,
-        //         // userSnapshot.data!.docs.length,
-        //         itemBuilder: (context, index) {
-        //           // DocumentSnapshot userData = snapshot.data!.docs[index];
-        //           // print(' >>>>>> $userData');
-        //           return Text(' data : >>< ${snapshot.data!.docs[0]}');
-        //         })
-        //     : Text('hello');
       },
     );
-    // return ListView.builder(
-    //   itemCount: brews.length,
-    //   itemBuilder: (context, index) {
-    //     return BrewTile(brew: brews[index]);
-    //   },
-    // );
   }
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ninja_brew_crew/models/brew.dart';
 import 'package:flutter/material.dart';
 
 class BrewTile extends StatelessWidget {

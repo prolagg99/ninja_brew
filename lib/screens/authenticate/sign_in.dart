@@ -95,6 +95,26 @@ class _SignInState extends State<SignIn> {
                       error,
                       style: TextStyle(color: Colors.red, fontSize: 14.0),
                     ),
+                    RaisedButton(
+                        color: Colors.pink[400],
+                        child: Text(
+                          'Sign In With Fb',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () async {
+                          setState(() => loading = true);
+                          dynamic result = await _auth.signInFacebook(context);
+                          print('result : $result');
+                          /*  if (result == null) {
+                            setState(() {
+                              loading = false;
+                            });
+                            print(
+                                'error signin in'); // create error page with SnackBar
+                          } else {
+                            print('Signed In Facebook');
+                          } */
+                        }),
                   ],
                 ),
               ),
