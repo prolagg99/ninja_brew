@@ -79,29 +79,6 @@ class AuthService {
         'imageUrl': userData['picture']['data']['url'],
         'name': userData['name'],
       });
-
-      // // // Create a credential from the access token
-      // // final OAuthCredential facebookAuthCredential =
-      // //     FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-      // // // Once signed in, return the UserCredential
-      // // return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-
-      // switch (loginResult.status) {
-      //   case LoginStatus.success:
-      //     String token = loginResult.accessToken!.token;
-      //     final OAuthCredential credential =
-      //         FacebookAuthProvider.credential(token);
-      //     await _auth.signInWithCredential(credential);
-      //     break;
-      //   case LoginStatus.cancelled:
-      //     break;
-      //   case LoginStatus.failed:
-      //     break;
-      //   case LoginStatus.operationInProgress:
-      //     break;
-      // }
-      // return true;
     } on FirebaseAuthException catch (e) {
       var title = '';
       switch (e.code) {
@@ -126,7 +103,7 @@ class AuthService {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('log in with facebook failed'),
-          content: const Text('title'),
+          content: Text(title),
           actions: [
             TextButton(
               onPressed: () {

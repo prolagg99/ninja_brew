@@ -101,10 +101,11 @@ class _SignInState extends State<SignIn> {
                           'Sign In With Fb',
                           style: TextStyle(color: Colors.white),
                         ),
-                        onPressed: () async {
+                        onPressed: () {
                           setState(() => loading = true);
-                          dynamic result = await _auth.signInFacebook(context);
-                          print('result : $result');
+                          // dynamic result = await
+                          _auth.signInFacebook(context);
+                          // print('result : $result');
                           /*  if (result == null) {
                             setState(() {
                               loading = false;
